@@ -12,7 +12,8 @@ const LOCALSTORAGE_KEY = "videoplayer-current-time";
 const throttledGetTime = _(playerGetTime, 1000);
 
 player.on('timeupdate', throttledGetTime);
-player.on('playing', playerSetTime);
+// player.on('play', playerSetTime);
+playerSetTime()
 
 function playerGetTime() {
     player.getCurrentTime().then(function(seconds) {
@@ -22,7 +23,13 @@ function playerGetTime() {
 
 function playerSetTime() {
     const newTime = localStorage.getItem(LOCALSTORAGE_KEY);
+
+    if (newTime === null) {
+        newTime = 0;
+    }
+
     player.setCurrentTime(newTime).then(function(newTime) {
     // seconds = the actual time that the player seeked to
-});
+    });
+
 };

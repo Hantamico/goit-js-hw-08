@@ -22,7 +22,7 @@ function playerGetTime() {
 };
 
 function playerSetTime() {
-    const newTime = localStorage.getItem(LOCALSTORAGE_KEY);
+    let newTime = localStorage.getItem(LOCALSTORAGE_KEY);
 
     if (newTime === null) {
         newTime = 0;
